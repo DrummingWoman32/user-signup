@@ -32,19 +32,22 @@ def validate():
         vp_error = "Passwords don't match up"
 
     #go through username and check for spaces
+    #after checking length of username
+    if len(username) >= 3 and len(username) <= 20:
+        username_error = ""
+        
+    else:   
+        username_error = "Username must be 3 - 20 characters long"
+        #password = ""
+        #verify_password = ""
 
     for c in username:
         if c == " " :
             username_error = "Spaces are not allowed in usernames"
-            password = ""
-            verify_password = ""
+            #password = ""
+            #verify_password = ""
             break
     
-    if len(username) < 3 or len(username) > 20:
-        username_error = "Username must be 3 - 20 characters long"
-        password = ""
-        verify_password = ""
-        
 
     if password != verify_password:
         vp_error = "Passwords don't match up"
@@ -55,20 +58,23 @@ def validate():
 
     spaces = 0
 
-    if len(password) < 3 or len(password) > 20:
-        password_error = "Passwords must be 3 to 20 characters long"
-        password = ""
-        verify_password = ""
+    if len(password) >= 3 and len(password) <= 20:
+        #password_error = ""
 
-    else:
         for c in password:
             if c == " ":
                 spaces += 1
 
-    if spaces != 0:
-        password_error = "Spaces are not allowed in passwords"
+        if spaces != 0:
+            password_error = "Spaces are not allowed in passwords"
+            password = ""
+            verify_password = ""
+
+    else:
+        password_error = "Passwords must be 3 to 20 characters long"
         password = ""
         verify_password = ""
+
 
     #go through email and check for anything inappropriate
 
